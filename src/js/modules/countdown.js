@@ -4,8 +4,7 @@ import { updateTimerDisplay, updateDailyDisplay, showArrivalState } from './ui.j
 let currentBackground = '';
 let countdownInterval; // THE FIX: Declare the variable here
 
-const justTheDate = new Date(TARGET_DATE);
-justTheDate.setUTCHours(0, 0, 0, 0);
+const justTheDate = new Date(TARGET_DATE.toISOString().slice(0, 10) + 'T00:00:00');
 
 function runCountdown() {
     const now = new Date();
@@ -26,6 +25,8 @@ function runCountdown() {
     updateTimerDisplay(timeString);
 
     const daysLeft = Math.floor((justTheDate - now)/ (1000 * 60 * 60 * 24));
+    console.log(justTheDate);
+    console.log(now);
 
     // --- Background & Message Logic ---
     let message, background;
