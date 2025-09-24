@@ -8,9 +8,11 @@ export const MESSAGES = {
     // Message for 3 or more days away
     day_3_plus: "Send 3 random relics of your life today.📷",
     // Message for Day 2
-    day_2: "Do something on behalf of both of us 2 times.🤸‍♂️",
+    day_2: "Find 2 things in your room that remind you of me.🤸‍♂️",
     // Message for Day 1 (the final day)
-    day_1: "Give me 1 reason you're glad you have me.💌"
+    day_1: "Give me 1 reason you're glad you have me.💌",
+    // Message for last hours
+    arrival_day: "only a few hours left! Can't wait to see you.⏳"
 };
 
 // 3. Define the background images for each day

@@ -4,6 +4,9 @@ import { updateTimerDisplay, updateDailyDisplay, showArrivalState } from './ui.j
 let currentBackground = '';
 let countdownInterval; // THE FIX: Declare the variable here
 
+const justTheDate = new Date(TARGET_DATE);
+justTheDate.setUTCHours(0, 0, 0, 0);
+
 function runCountdown() {
     const now = new Date();
     const timeRemaining = TARGET_DATE - now;
@@ -22,16 +25,21 @@ function runCountdown() {
     const timeString = `${String(days).padStart(2, '0')} : ${String(hours).padStart(2, '0')} : ${String(minutes).padStart(2, '0')} : ${String(seconds).padStart(2, '0')}`;
     updateTimerDisplay(timeString);
 
+    const daysLeft = Math.floor((justTheDate - now)/ (1000 * 60 * 60 * 24));
+
     // --- Background & Message Logic ---
     let message, background;
     const isArrivalDay = now.toISOString().slice(0, 10) === TARGET_DATE.toISOString().slice(0, 10);
 
     if (isArrivalDay) {
-        message = MESSAGES.day_1;
+        message = MESSAGES.arrival_day;
         background = BACKGROUNDS.arrival_day;
-    } else if (days === 1) {
+    } else if (daysLeft === 0) {
+        message = MESSAGES.day_1;
+        background = BACKGROUNDS.day_1;
+    } else if (daysLeft === 1) {
         message = MESSAGES.day_2;
-        background = BACKGROUNDS.road;
+        background = BACKGROUNDS.day_2;
     } else {
         message = MESSAGES.day_3_plus;
         background = BACKGROUNDS.day_3_plus;
