@@ -6,11 +6,11 @@ export const TARGET_DATE = new Date("2025-09-27T09:00:00"); // Saturday at 9:00 
 // 2. Define the daily messages
 export const MESSAGES = {
     // Message for 3 or more days away
-    day_3_plus: "Send 3 random relics of your life today.",
+    day_3_plus: "Send 3 random relics of your life today.📷",
     // Message for Day 2
-    day_2: "Do something on behalf of both of us 2 times.",
+    day_2: "Do something on behalf of both of us 2 times.🤸‍♂️",
     // Message for Day 1 (the final day)
-    day_1: "Give me 1 reason you're glad you have me"
+    day_1: "Give me 1 reason you're glad you have me.💌"
 };
 
 // 3. Define the background images for each day
