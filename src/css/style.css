@@ -16,7 +16,7 @@ body::before {
     position: absolute;
     top: 0; left: 0; right: 0; bottom: 0;
     background: inherit; /* Inherits the body's background-image */
-    filter: blur(8px) brightness(40%);
+    filter: blur(4px) brightness(50%);
     z-index: -1;
     transition: filter 1s ease-in-out; /* Smooth transition for the finale */
 }

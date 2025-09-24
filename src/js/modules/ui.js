@@ -1,5 +1,5 @@
 // This module handles all updates to the DOM (the webpage)
-
+import { BACKGROUNDS } from './config.js';
 // Get all the elements we need to interact with
 const elements = {
     countdown: document.getElementById('countdown'),
@@ -30,10 +30,11 @@ export function updateDailyDisplay(message, backgroundUrl) {
     }
 }
 
-/**
- * Triggers the final arrival state.
- */
 export function showArrivalState() {
+    // THE FIX: Explicitly set the final background image to make it permanent
+    elements.body.style.backgroundImage = `url('${BACKGROUNDS.arrival_day}')`;
+    
+    // --- The rest of the function remains the same ---
     elements.countdown.style.display = 'none';
     elements.messageCard.style.display = 'none';
     elements.arrivalMessage.style.display = 'block';

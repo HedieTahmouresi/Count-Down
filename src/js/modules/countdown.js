@@ -1,10 +1,11 @@
 import { TARGET_DATE, MESSAGES, BACKGROUNDS } from './config.js';
 import { updateTimerDisplay, updateDailyDisplay, showArrivalState } from './ui.js';
 
-let currentDay = -1; // Used to check if the day has changed
+// We'll use this to track the current background to prevent unnecessary updates
+let currentBackground = '';
 
 function runCountdown() {
-    const now = new Date().getTime();
+    const now = new Date();
     const timeRemaining = TARGET_DATE - now;
 
     if (timeRemaining <= 0) {
@@ -13,42 +14,44 @@ function runCountdown() {
         return;
     }
 
-    // Calculate time components
+    // --- Time Calculation (remains the same) ---
     const days = Math.floor(timeRemaining / (1000 * 60 * 60 * 24));
     const hours = Math.floor((timeRemaining % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
     const minutes = Math.floor((timeRemaining % (1000 * 60 * 60)) / (1000 * 60));
     const seconds = Math.floor((timeRemaining % (1000 * 60)) / 1000);
-
-    // Format for display
     const timeString = `${String(days).padStart(2, '0')} : ${String(hours).padStart(2, '0')} : ${String(minutes).padStart(2, '0')} : ${String(seconds).padStart(2, '0')}`;
     updateTimerDisplay(timeString);
-    
-    // Check if the day has changed to update the message and background
-    if (days !== currentDay) {
-        currentDay = days;
-        let message, background;
 
-        if (days >= 2) { // Day 3+
-            message = MESSAGES.day_3_plus;
-            background = BACKGROUNDS.day_3_plus;
-        } else if (days === 1) { // Day 2
-            message = MESSAGES.day_2;
-            background = BACKGROUNDS.day_2;
-        } else if (days === 0) { // Day 1
-            message = MESSAGES.day_1;
-            background = BACKGROUNDS.day_1;
-        }
-        
-        // Update the display for the current day
+    // --- New, Smarter Background & Message Logic ---
+    let message, background;
+    
+    // THE FIX: Check if the current calendar date matches the arrival calendar date
+    const isArrivalDay = now.toISOString().slice(0, 10) === TARGET_DATE.toISOString().slice(0, 10);
+
+    if (isArrivalDay) {
+        console.log("yayyy");
+        // If it's the arrival day (e.g., any time on Saturday)
+        message = MESSAGES.day_1;
+        background = BACKGROUNDS.arrival_day;
+    } else if (days === 1) {
+        // If there's 1 full day left (e.g., any time on Friday)
+        message = MESSAGES.day_2;
+        background = BACKGROUNDS.road;
+    } else {
+        // If there are 2 or more days left
+        message = MESSAGES.day_3_plus;
+        background = BACKGROUNDS.day_3_plus;
+    }
+    
+    // To be efficient, only update the display if the background needs to change
+    if (background !== currentBackground) {
+        currentBackground = background;
         updateDailyDisplay(message, background);
     }
 }
 
-// Set the initial background for arrival day before the countdown starts if needed
-if (new Date().getTime() > TARGET_DATE - (24 * 60 * 60 * 1000)) {
-     document.body.style.backgroundImage = `url('${BACKGROUNDS.arrival_day}')`;
-}
 
-// Run the countdown immediately and then every second
+// --- The rest of the file (initial run and interval) stays the same ---
+// We removed the initial background setting logic as it's now handled in the main function
 runCountdown();
 const countdownInterval = setInterval(runCountdown, 1000);

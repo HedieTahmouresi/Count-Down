@@ -1,7 +1,7 @@
 // --- THE CONTROL PANEL ---
 
 // 1. Set the arrival date and time
-export const TARGET_DATE = new Date("2025-09-27T09:00:00"); // Saturday at 9:00 AM
+export const TARGET_DATE = new Date("2025-09-24T14:13:00"); // Saturday at 9:00 AM
 
 // 2. Define the daily messages
 export const MESSAGES = {
@@ -19,5 +19,5 @@ export const BACKGROUNDS = {
     day_2: "assets/images/departure-city.jpg",
     day_1: "assets/images/road.jpg",
     // The background for arrival day
-    arrival_day: "assets/images/arrival-city.jpg"
+    arrival_day: "assets/images/arrival-city.jpeg"
 };
