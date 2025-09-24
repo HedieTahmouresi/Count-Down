@@ -1,0 +1,71 @@
+/* --- Base and Layout --- */
+body {
+    height: 100vh;
+    margin: 0;
+    font-family: 'Montserrat', sans-serif;
+    color: white;
+    background-size: cover;
+    background-position: center center;
+    transition: background-image 1s ease-in-out; /* Smooth transition for background changes */
+    overflow: hidden;
+}
+
+/* The dark, blurry effect for the background */
+body::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: inherit; /* Inherits the body's background-image */
+    filter: blur(8px) brightness(40%);
+    z-index: -1;
+    transition: filter 1s ease-in-out; /* Smooth transition for the finale */
+}
+
+/* Class to trigger the finale effect */
+body.is-revealed::before {
+    filter: blur(0px) brightness(100%);
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    height: 100%;
+    padding: 20px;
+}
+
+/* --- Timer and Message Text --- */
+.timer-text {
+    font-size: 8vw;
+    font-weight: 700;
+    text-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+}
+
+@media (max-width: 768px) {
+    .timer-text { font-size: 12vw; }
+}
+
+/* --- Glass Card Component --- */
+.glass-card {
+    margin-top: 30px;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 15px;
+    padding: 20px 30px;
+    max-width: 80%;
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+}
+
+#daily-message {
+    margin: 0;
+    font-size: 1.5rem;
+    font-weight: 400;
+}
+
+@media (max-width: 768px) {
+    #daily-message { font-size: 1.2rem; }
+}
