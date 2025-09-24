@@ -37,14 +37,16 @@ body.is-revealed::before {
 }
 
 /* --- Timer and Message Text --- */
+/* --- Timer and Message Text --- */
+/* --- Timer and Message Text --- */
 .timer-text {
-    font-size: 8vw;
+    white-space: nowrap; /* ADD THIS LINE */
+    
+    /* ADJUSTED: min size, preferred size, max size */
+    font-size: clamp(2rem, 10vw, 8rem); /* ADJUST THIS LINE */
+    
     font-weight: 700;
     text-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
-}
-
-@media (max-width: 768px) {
-    .timer-text { font-size: 12vw; }
 }
 
 /* --- Glass Card Component --- */
