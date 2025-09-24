@@ -25,8 +25,6 @@ function runCountdown() {
     updateTimerDisplay(timeString);
 
     const daysLeft = Math.floor((justTheDate - now)/ (1000 * 60 * 60 * 24));
-    console.log(justTheDate);
-    console.log(now);
 
     // --- Background & Message Logic ---
     let message, background;
