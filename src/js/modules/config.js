@@ -8,7 +8,7 @@ export const MESSAGES = {
     // Message for 3 or more days away
     day_3_plus: "Send 3 random relics of your life today.📷",
     // Message for Day 2
-    day_2: "Find 2 things in your room that remind you of me.🤸‍♂️",
+    day_2: "Find 2 things in your room that remind you of me.🤸‍♂️\n(not the ones I gave you)",
     // Message for Day 1 (the final day)
     day_1: "Give me 1 reason you're glad you have me.💌",
     // Message for last hours
