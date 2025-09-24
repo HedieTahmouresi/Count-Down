@@ -18,8 +18,6 @@ You can view the live version of this project here:
 
 **[https://your-username.github.io/friend-countdown/](https://hedietahmouresi.github.io/Count-Down/)**
 
-*(Note: Replace `your-username` and `friend-countdown` with your actual GitHub username and repository name.)*
-
 ***
 
 ## 🛠️ How to Use or Customize
