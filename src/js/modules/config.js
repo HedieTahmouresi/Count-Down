@@ -18,8 +18,8 @@ export const MESSAGES = {
 // 3. Define the background images for each day
 export const BACKGROUNDS = {
     day_3_plus: "assets/images/departure-city.jpg",
-    day_2: "assets/images/departure-city.jpg",
-    day_1: "assets/images/road.jpg",
+    day_2: "assets/images/road.jpg",
+    day_1: "assets/images/arrival-city.jpeg",
     // The background for arrival day
     arrival_day: "assets/images/arrival-city.jpeg"
 };
